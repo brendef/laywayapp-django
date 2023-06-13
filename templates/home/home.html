@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock title %}
+{% block content %}
+<main>
+    <div class="container">
+  
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Welcome to <span class='text-primary'>LayWay</span></h1>
+            <p class="col-md-8 fs-4"> South Africas favourite layby payment gateway</p>
+            <p class="col-md-8 fs-4"></p>
+            </p>
+            <a class="btn btn-primary btn-lg" href="{% url 'timeline' %}">Sign up</a>
+        </div>
+      </div>
+  
+      <div class="row align-items-md-stretch">
+        <div class="col-md-6">
+          <div class="h-80 p-5 text-white bg-dark rounded-3">
+            <h2>You choose</h2>
+            <p>Choose what timeframe you would like to pay</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="h-80 p-5 bg-light border rounded-3">
+            <h2>SMS reminders</h2>
+            <p>Don't forget to pay we will remind you via sms </p>
+          </div>
+        </div>
+      </div>
+  
+      <footer class="pt-3 mt-4 text-muted border-top"> Brendan de Faria m: 068 581 6811 e: brendan.defaria@gmail.com</footer>
+    </div>
+  </main>
+{% endblock content %}
