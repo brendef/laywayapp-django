@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "apps.home",
     "apps.timeline",
     "apps.product",
+    "apps.installment",
+    "apps.merchant",
 ]
 
 MIDDLEWARE = [

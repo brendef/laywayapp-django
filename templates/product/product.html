@@ -8,33 +8,35 @@
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{product_image}}" alt="..." /></div>
                     <div class="col-md-6">
-                        {% if product_sku %}  
-                        <div class="small mb-1">sku: {{product_sku}}</div>
-                        {% endif %}
-                        <h1 class="display-5 fw-bolder">{{product_name}}</h1>
-                        <div class="fs-5 mb-5">
-                            <span>R{{product_price}}</span>
-                        </div>
-                        <div class="d-grid dropdown">
-                            {% for key, value in product_attributes.items %}
+                        <form action="{% url "product" %}" method="POST">
+                            {% csrf_token %}
+                            {% if product_sku %}  
+                            <div class="small mb-1">sku: {{product_sku}}</div>
+                            {% endif %}
+                            <h1 class="display-5 fw-bolder">{{product_name}}</h1>
+                            <div class="fs-5 mb-5">
+                                <span>R{{product_price}}</span>
+                            </div>
+                            <div class="d-grid dropdown">
+                                {% for key, value in product_attributes.items %}
+                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="{{key}}">
+                                    <option selected>{{ key }}</option>
+                                    {% for item in value %}
+                                    <option value="{{item}}#{{forloop.counter}}">{{item}}</option>
+                                    {% endfor %}
+                                </select>
 
-                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                <option selected>{{ key }}</option>
-                                {% for item in value %}
-                                <option value="1">{{item}}</option>
-                                {% endfor %}
-                            </select>
-
-                         {% endfor %}
-                    
-                        </div>
-                        <div class="mt-5 d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark btn-lg flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Proceed with Layby
-                            </button>
-                        </div>
+                            {% endfor %}
+                        
+                            </div>
+                            <div class="mt-5 d-flex">
+                                <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                                <button class="btn btn-outline-dark btn-lg flex-shrink-0" type="submit">
+                                    <i class="bi-cart-fill me-1"></i>
+                                    Proceed with Layby
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

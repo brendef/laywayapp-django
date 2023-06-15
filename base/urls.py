@@ -7,4 +7,5 @@ urlpatterns = [
     path("", include("apps.auth.urls")),
     path("timeline/", include("apps.timeline.urls")),
     path("product/", include("apps.product.urls")),
+    path("installment/", include("apps.installment.urls")),
 ]
