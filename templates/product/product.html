@@ -8,7 +8,7 @@
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{product_image}}" alt="..." /></div>
                     <div class="col-md-6">
-                        <form action="{% url "product" %}" method="POST">
+                        <form action="{% url "installment" %}" method="POST">
                             {% csrf_token %}
                             {% if product_sku %}  
                             <div class="small mb-1">sku: {{product_sku}}</div>

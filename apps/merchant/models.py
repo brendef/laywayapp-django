@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import int_list_validator
 
 
 class FrequencySettings(models.Model):
@@ -13,38 +14,12 @@ class FrequencySettings(models.Model):
         return self.nameAdjective
 
 
-class InstallmentConfiguration(models.Model):
-    name = models.CharField(max_length=50, unique=True, null=False)
-    frequency = models.ManyToManyField(FrequencySettings)
-    active = models.BooleanField(default=False)
-    requireDeposit = models.BooleanField(default=False)
-
-    def __str__(self) -> str:
-        return self.name
-
-
 class Merchant(models.Model):
     name = models.CharField(max_length=50, null=False)
-    installmentConfiguration = models.OneToOneField(
-        InstallmentConfiguration, on_delete=models.CASCADE
-    )
+    frequency = models.CharField(validators=[int_list_validator()], max_length=100)
+    requireDeposit = models.BooleanField(default=False)
+    minimumDepositPercentage = models.IntegerField(unique=False, null=False, default=0)
+    minimumDepositAmount = models.IntegerField(unique=False, null=False, default=0)
 
     def __str__(self):
         return self.name
-
-    # deductionDays: {
-    #     days: [
-    #         {
-    #             name: 1,
-    #             day: 1,
-    #         }
-    #     ],
-    #     relative: true,
-    # },
-    # requireDeposit: true,
-    # dates: [],
-    # startDate: 0,
-    # endDate: 0,
-    # minimumDepositPercentage: 0,
-    # minimumDepositAmount: 0,
-    # currency: 1,

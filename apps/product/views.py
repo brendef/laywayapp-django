@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import json
 from django.http import HttpResponse
+from apps.merchant.models import Merchant
 
 
 def product(request):
@@ -26,10 +27,7 @@ def product(request):
             "product_name": product_name,
         }
 
-        # todo get data
-        # request.session["installment_config"] = {
-
-        # }
+        request.session["product"] = context
 
         return render(request, "product/product.html", context)
 
